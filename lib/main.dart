@@ -1,10 +1,13 @@
+import 'package:fatness_app/result.dart';
 import 'package:flutter/material.dart';
 
+import 'bmi.dart';
+
 void main() {
-  runApp(MyApp());
+  runApp(FatnessApp());
 }
 
-class MyApp extends StatelessWidget {
+class FatnessApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -14,20 +17,20 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: '비만도 계산기'),
+      home: MainPage(title: '비만도 계산기'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class MainPage extends StatefulWidget {
+  MainPage({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MainPageState createState() => _MainPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MainPageState extends State<MainPage> {
   double height = 0;
   double weight = 0;
   double bmi = 0;
@@ -63,7 +66,10 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.deepOrange,
               onPressed: () {
                 setState(() {
-                  bmi = weight / (height * height);
+                  BMIType result = BMI.calculate(height, weight);
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => ResultPage(result)
+                  ));
                 });
               },
             ),
