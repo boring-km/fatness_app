@@ -4,8 +4,8 @@ import 'bmi.dart';
 
 class ResultPage extends StatelessWidget {
 
-  final BMIType bmiType;
-  ResultPage(this.bmiType);
+  final BMI bmi;
+  ResultPage(this.bmi);
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +17,11 @@ class ResultPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset(bmiType.imageURL),
-            Text(bmiType.text)
+            Image.asset(bmi.imageURL),
+            Text(bmi.status),
           ],
         ),
       ),
     );
   }
-
 }

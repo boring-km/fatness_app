@@ -43,6 +43,13 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  fonts:
+    - family: NanumSquareRound
+      fonts:
+        - asset: fonts/NanumSquareRoundB.ttf
+        - asset: fonts/NanumSquareRoundEB.ttf
+        - asset: fonts/NanumSquareRoundL.ttf
+        - asset: fonts/NanumSquareRoundR.ttf
   assets:
     - assets/
   # To add assets to your application, add an assets section, like this:

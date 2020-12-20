@@ -1,7 +1,20 @@
 class BMI {
 
-  static BMIType calculate(double height, double weight) {
-    double bmi = weight / (height * height);
+  final double _height, _weight;
+  double _bmi;
+  double get bmi => _bmi;
+
+  String imageURL, status;
+  BMIType type;
+
+  BMI(this._height, this._weight) {
+    _bmi = _weight / (_height * _height);
+    type = _getType(_bmi);
+    imageURL = type.imageURL;
+    status = type.status;
+  }
+
+  BMIType _getType(double bmi) {
     if (bmi <= 18.5) {
       return BMIType.LOW_WEIGHT;
     } else if (bmi <= 22.9) {
@@ -35,7 +48,7 @@ extension BMITypeExtension on BMIType{
     }
   }
 
-  String get text {
+  String get status {
     switch (this) {
       case BMIType.LOW_WEIGHT:
         return '저체중';
